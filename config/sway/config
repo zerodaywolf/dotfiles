@@ -1,6 +1,8 @@
 # give Sway a little time to startup before starting kanshi.
 exec sleep 5; systemctl --user start kanshi.service
 output * scale 1.0
+output eDP-1 pos 0 0
+output DP-1 pos 1920 0
 exec waybar
 
 # Brightness
@@ -11,6 +13,10 @@ bindsym XF86MonBrightnessUp exec 'light -A 10'
 bindsym XF86AudioRaiseVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'
 bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'
 bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
+
+# Screenshot
+bindsym Print exec 'grim -g "$(slurp)" - | wl-copy'
+
 # Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
@@ -85,7 +91,7 @@ exec swayidle -w \
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+r exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -210,11 +216,11 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+#bindsym $mod+r mode "resize"
 
 input type:touchpad {
     natural_scroll enabled
-    pointer_accel 1
+    pointer_accel 0.8
     tap enabled
 }
 
