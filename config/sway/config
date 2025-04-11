@@ -1,8 +1,9 @@
 # give Sway a little time to startup before starting kanshi.
 exec sleep 5; systemctl --user start kanshi.service
 output * scale 1.0
-output eDP-1 pos 0 0
-output DP-1 pos 1920 0
+output DP-2 pos 0 0
+output eDP-1 pos 1920 0
+output HDMI-A-1 pos 3840 0
 exec waybar
 
 # Brightness
@@ -50,7 +51,8 @@ output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_19
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 workspace 1 output eDP-1
-workspace 2 output DP-1
+workspace 2 output DP-2
+workspace 3 output HDMI-A-1
 default_border none
 
 ### Idle configuration
@@ -241,5 +243,7 @@ input type:touchpad {
 #        inactive_workspace #32323200 #32323200 #5c5c5c
 #    }
 #}
+
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 include /etc/sway/config.d/*
