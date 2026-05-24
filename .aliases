@@ -1,8 +1,13 @@
 alias sts='aws sts get-caller-identity'
+alias k='kubectl'
 alias ls='ls --color=auto'
-alias vim="nvim"
+alias ll='ls -altrh'
+alias vi="vim"
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
-alias sudo='sudo '
 alias n='nmcli'
-alias tmux='env TERM=screen-256color tmux'
+alias dc='docker compose'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gs='git status'
